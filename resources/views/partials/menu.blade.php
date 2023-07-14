@@ -15,6 +15,16 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
+        @can('bonusekleme_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.bonuseklemes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/bonuseklemes") || request()->is("admin/bonuseklemes/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.bonusekleme.title') }}
+                </a>
+            </li>
+        @endcan
         @can('bonustime_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.bonustimes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/bonustimes") || request()->is("admin/bonustimes/*") ? "c-active" : "" }}">
@@ -75,16 +85,6 @@
                         </li>
                     @endcan
                 </ul>
-            </li>
-        @endcan
-        @can('bonusekleme_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.bonuseklemes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/bonuseklemes") || request()->is("admin/bonuseklemes/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.bonusekleme.title') }}
-                </a>
             </li>
         @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
